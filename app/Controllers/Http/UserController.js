@@ -13,20 +13,20 @@ class UserController {
     if (!reg_no) {
       errors.push({
         text: "Please provide your registeration number",
-        field: "reg_no"
+        field: "reg_no",
       });
     }
     if (!password) {
       errors.push({
         text: "Enter your password",
-        field: "password"
+        field: "password",
       });
     }
     if (errors.length > 0) {
       return response.json({
         errors,
         reg_no,
-        password
+        password,
       });
     }
     try {
@@ -34,27 +34,27 @@ class UserController {
       if (!findUser) {
         return response.json({
           msg: "One of your credential is wrong and I won't tell you the one",
-          error: true
+          error: true,
         });
       }
       const match = await bcrypt.compare(password, findUser.password);
       if (match) {
         const user = {
           id: findUser.id,
-          reg_no
+          reg_no,
         };
-        const token = jwt.sign(user, process.env.secret, {
-          expiresIn: "1h"
+        const token = jwt.sign(user, process.env.JWT_SECRET, {
+          expiresIn: "1h",
         });
         response.cookie("tokenizeMe", token, {
           maxAge: 3600000,
-          httpOnly: true
+          httpOnly: true,
         });
         response.json({ token });
       } else {
         response.json({
           msg: "One of your credential is wrong and I won't tell you which one",
-          error: true
+          error: true,
         });
       }
     } catch (error) {
@@ -68,7 +68,7 @@ class UserController {
     if (!reg_no) {
       errors.push({
         text: "Please provide your registeration number",
-        field: "reg_no"
+        field: "reg_no",
       });
     }
     if (errors.length > 0) {
@@ -80,7 +80,7 @@ class UserController {
         return response.json({
           msg:
             "Hmmm 🌚😏. This reg number looks strange to me. Please visit the LMU ADMISSIONS page.",
-          error: true
+          error: true,
         });
       }
       const { fullname, email, programme } = data;
@@ -94,7 +94,7 @@ class UserController {
         if (checkReg) {
           return response.json({
             msg: "Registration number already in use",
-            error: true
+            error: true,
           });
         }
       } catch (error) {
@@ -109,8 +109,8 @@ class UserController {
         context: {
           name: fullname,
           email,
-          password
-        }
+          password,
+        },
       };
 
       try {
@@ -118,7 +118,7 @@ class UserController {
       } catch (error) {
         return response.json({
           msg: `Couldn't send mail to ${email}`,
-          error
+          error,
         });
       }
 
@@ -131,11 +131,11 @@ class UserController {
           username,
           password: hashPassword,
           programme,
-          position: "Student"
+          position: "Student",
         });
         response.json({
           msg: "Check your webmail for your 5 string password.",
-          error: false
+          error: false,
         });
       } catch (error) {
         response.json({ msg: "Database error", error });
