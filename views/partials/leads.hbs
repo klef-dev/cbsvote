@@ -1,0 +1,32 @@
+{{!-- CBS LEADS --}}
+<div id="leads" data-w-id="41748a75-a424-d39d-9cd1-e21b3f8c398c" class="section-news-wrap">
+    <div class="news_gallery_2">
+        <div class="news_title_scroll_track">
+            <div class="news_title_container">
+                <div class="news_title_div">
+                    <h3 class="h3-news-title">Final Winners</h3>
+                </div>
+            </div>
+        </div>
+        <div class="news_gallery_scroll_track">
+            <div class="news_gallery_container">
+                <div class="news_gallery_track">
+                    {{#each nominees}}
+                    <div class="news_card_container">
+                        <div class="news_card concrete_news"
+                            style="background-image: -webkit-linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, .15)), url(http://127.0.0.1:3333{{image}}); background-image: linear-gradient(0deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, .15)), url(http://127.0.0.1:3333{{image}});">
+                            <div class="news_text_container">
+                                <div class="news_date">{{this.category}}</div>
+                                <div class="news_date">{{this.username}}</div>
+                                <h3 class="news_title_h3">
+                                    Won with a total of {{this.vote}} votes.
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

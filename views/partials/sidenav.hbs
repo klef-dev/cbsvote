@@ -1,0 +1,57 @@
+{{!-- CBS SIDE NAVIGATION --}}
+<div class="sidenav w-hidden-small w-hidden-tiny">
+    <a class="logo-div w-inline-block" href="/"><img class="logodiv" sizes="(max-width: 767px) 100vw, 30px"
+            src="/tonidev/img/logo.png" srcset="
+            /tonidev/img/logo.png  500w,
+            /tonidev/img/logo.png  800w,
+            /tonidev/img/logo.png 1001w
+          " /></a>
+
+    <div class="nav-items w-clearfix">
+        <a data-ix="navrollover" href="#" class="navmenu-link hiconome w-inline-block">
+            <div data-ix="navhover" class="navhoverblock w-clearfix">
+                <div class="navlink-hovericon homeicon"></div>
+                <div data-ix="navlinktext" class="navlink-text">Home</div>
+            </div>
+        </a>
+        <a data-ix="navrollover" href="/category" class="navmenu-link w-inline-block">
+            <div data-ix="navhover" class="navhoverblock _2 w-clearfix">
+                <div class="navlink-hovericon"></div>
+                <div data-ix="navlinktext" class="navlink-text">Categories</div>
+            </div>
+        </a>
+        {{#if token}}
+        <a data-ix="navrollover" href="/auth/logout" class="navmenu-link aboutmeicon w-inline-block">
+            <div data-ix="navhover" class="navhoverblock _4 w-clearfix">
+                <div class="navlink-hovericon aboutmeicon"></div>
+                <div data-ix="navlinktext" class="navlink-text">Logout</div>
+            </div>
+        </a>
+
+        {{else}}
+        <a data-ix="navrollover" href="/auth/register" class="navmenu-link projects w-inline-block">
+            <div data-ix="navhover" class="navhoverblock _3 w-clearfix">
+                <div class="navlink-hovericon projectsicon"></div>
+                <div data-ix="navlinktext" class="navlink-text">Sign Up</div>
+            </div>
+        </a>
+
+        <a data-ix="navrollover" href="/auth/login" class="navmenu-link aboutmeicon w-inline-block">
+            <div data-ix="navhover" class="navhoverblock _4 w-clearfix">
+                <div class="navlink-hovericon aboutmeicon"></div>
+                <div data-ix="navlinktext" class="navlink-text">Login</div>
+            </div>
+        </a>
+        
+        {{/if}}
+    </div>
+    <div class="social-div">
+        <div class="logo-div social-icons li">
+            <a href="https://www.instagram.com/klefcodes/" target="_blank" class="fa-link ig"></a>
+        </div>
+        <div class="logo-div social-icons li">
+            <a href="https://klefcodes.net/" target="_blank" class="fa-link facebook"
+                style="color: #4954fb;">&copysr;</a>
+        </div>
+    </div>
+</div>

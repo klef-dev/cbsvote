@@ -1,0 +1,28 @@
+{{!-- CBS SIDE NAVIGATION --}}
+{{> sidenav}}
+
+{{!-- CBS MOBILE NAVIGATION --}}
+{{> mobilenav}}
+
+{{!-- Hero bg --}}
+{{> category/hero}}
+
+{{!-- CBS CATEGORY LIST --}}
+<div class="column" id="category">
+    <nav class="codrops-demos">
+        {{#each cats}}
+        <!-- ⭐️ Klef the developer 😁 http://klefcodes.net ⭐️-->
+        <a href="/vote/{{this.title}}">{{this.name}}</a>
+        {{/each}}
+    </nav>
+    <br>
+    <br>
+
+    <div style="margin-bottom: 50px;">
+        <center>
+            <h2 class='h2-projects' style="color: black;">©2020 <a href="http://cbs.lmu.edu.ng/" target="_blank">
+                    College of Business and Social Science</a></h2>
+        </center>
+    </div>
+</div>
+<!-- Klefcodes x Tonidev -->

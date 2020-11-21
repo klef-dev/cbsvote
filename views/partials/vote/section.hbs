@@ -1,0 +1,60 @@
+<section class="episodes">
+    {{#each nominees}}
+    <!-- ⭐️ Klef developed this with ❤️ http://klefcodes.net ⭐️-->
+    <article class="episode">
+        <div class="episode__media" style="background-image:url(http://127.0.0.1:3333{{this.image}}); background-size:cover"
+            onmouseover="this.style='background-image:url(http://127.0.0.1:3333{{this.image}}); background-size:cover';"
+            onmouseout="this.style='background-image:url(http://127.0.0.1:3333{{this.image}}); background-size:cover';">
+            <a href="#" class="episode__image"></a>
+        </div>
+
+        <div class="episode__detail">
+            <a href="#" class="episode__title">
+                <h4 style="margin: 1rem 170px 0.3rem 0px;">{{this.username}}</h4>
+            </a>
+            <a id="voteBtn" onclick="Vote({{this.id}}, '{{../link}}', '{{../token}}')" class="btn btn-5">
+                <center id="content">
+                    <span id="content_{{this.id}}">VOTE 👍🏽</span>
+                    <a style="color: #4954fb;"></a>
+                </center>
+            </a>
+        </div>
+    </article>
+    {{/each}}
+    <br>
+    <div class="right">
+    {{#if prev_category_title}}
+        <div class="site__navigation">
+
+            <a href="/vote/{{prev_category_title}}" class="site__navigation_items site__navigation_items--left ">
+                <label for=""></label>
+                <h4>
+                    Previous Category </h4>
+            </a>
+        </div>
+        {{else}}
+        <div class="site__navigation">
+
+            <a href="/category" class="site__navigation_items site__navigation_items--left ">
+                <label for=""></label>
+                <h4>
+                    Back to Categories </h4>
+            </a>
+        </div>
+    {{/if}}
+    </div>
+    {{#if next_category_title}}
+    <div class="right">
+        <div class="site__navigation">
+            <a href="/vote/{{next_category_title}}" class="site__navigation_items site__navigation_items--left ">
+                <label for=""></label>
+                <h4>
+                    Next Category </h4>
+            </a>
+        </div>
+    </div>
+    {{/if}}
+</section>
+<script>
+
+</script>

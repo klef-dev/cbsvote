@@ -1,0 +1,49 @@
+{{!-- CBS MOBILE NAVIGATION --}}
+<div class="mobile-nav">
+    <div class="topnavbar w-hidden-main w-hidden-medium w-clearfix">
+        <div data-ix="hamburger" class="hamburger w-clearfix">
+            <div class="hamburger-line w-hidden-main w-hidden-medium"></div>
+            <div class="hamburger-line _2"></div>
+            <div class="hamburger-line _3"></div>
+        </div>
+    </div>
+    <div data-ix="topnavmenu" class="topnavmenu w-hidden-main w-hidden-medium w-clearfix">
+        <a href="#" class="mob-nav-lb top w-inline-block w-clearfix">
+            <div data-ix="close-mobile-menu" class="navhoverblock mobile w-clearfix">
+                <div class="navlink-hovericon homeicon mobile"></div>
+                <div class="navlink-text mobile">Home</div>
+            </div>
+        </a>
+
+        <a href="/category" class="mob-nav-lb w-inline-block w-clearfix">
+            <div data-ix="close-mobile-menu" class="navhoverblock _2 mobile w-clearfix">
+                <div class="navlink-hovericon mobile"></div>
+                <div class="navlink-text">Categories</div>
+            </div>
+        </a>
+        {{#if token}}
+        <a href="/auth/logout" class="mob-nav-lb w-inline-block w-clearfix">
+            <div data-ix="close-mobile-menu" class="navhoverblock _4 mobile w-clearfix">
+                <div class="navlink-hovericon aboutmeicon mobile"></div>
+                <div class="navlink-text">Logout</div>
+            </div>
+        </a>
+
+        {{else}}
+        <a href="/auth/register" class="mob-nav-lb w-inline-block w-clearfix">
+            <div data-ix="close-mobile-menu" class="navhoverblock _4 mobile w-clearfix">
+                <div class="navlink-hovericon projectsicon mobile"></div>
+                <div class="navlink-text">Sign Up</div>
+            </div>
+        </a>
+
+        <a href="/auth/login" class="mob-nav-lb w-inline-block w-clearfix">
+            <div data-ix="close-mobile-menu" class="navhoverblock _4 mobile w-clearfix">
+                <div class="navlink-hovericon aboutmeicon mobile"></div>
+                <div class="navlink-text">Login</div>
+            </div>
+        </a>
+
+        {{/if}}
+    </div>
+</div>
