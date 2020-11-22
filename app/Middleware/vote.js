@@ -1,6 +1,6 @@
 const vote = (request, response, next) => {
   const starting = new Date("Nov 21, 2020 00:00:00").getTime(); //The time voting will be starting
-  const ending = new Date("Nov 27, 2020 00:00:00").getTime(); //The time voting will be ending
+  const ending = new Date("Nov 25, 2020 00:00:00").getTime(); //The time voting will be ending
   const now = new Date().getTime();
   const distance_ending = ending - now;
   const distance_starting = starting - now;
