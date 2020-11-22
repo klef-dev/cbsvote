@@ -107,12 +107,12 @@ class HomeController {
       const categories = await Category.findAll();
       let cats = [];
       let name = "";
-      categories.forEach(category => {
+      categories.forEach((category) => {
         let { title } = category;
         name = convertCat(title);
         cats.push({
           title,
-          name
+          name,
         });
       });
       try {
@@ -121,7 +121,7 @@ class HomeController {
           layout: "cat",
           user,
           token: request.token,
-          cats
+          cats,
         });
       } catch (error) {
         response.clearCookie("tokenizeMe");
@@ -160,12 +160,12 @@ class HomeController {
         const nominee = await Nominee.findAll({ where: { category: link } });
         const nominees = [];
 
-        nominee.forEach(nominee => {
+        nominee.forEach((nominee) => {
           let { id, username, image } = nominee;
           nominees.push({
             id,
             username,
-            image
+            image,
           });
         });
 
@@ -173,7 +173,7 @@ class HomeController {
           const category = await Category.findOne({ where: { title: link } });
           const next_category_id = category.id + 1;
           const next_category = await Category.findOne({
-            where: { id: next_category_id }
+            where: { id: next_category_id },
           });
           let next_category_title = null;
           if (next_category) {
@@ -182,7 +182,7 @@ class HomeController {
 
           const prev_category_id = category.id - 1;
           const prev_category = await Category.findOne({
-            where: { id: prev_category_id }
+            where: { id: prev_category_id },
           });
           let prev_category_title = null;
           if (prev_category) {
@@ -198,7 +198,8 @@ class HomeController {
               link,
               nominees,
               next_category_title,
-              prev_category_title
+              prev_category_title,
+              api_endpoint: process.env.API_ENDPOINT,
             });
           } catch (error) {
             response.clearCookie("tokenizeMe");
@@ -208,7 +209,8 @@ class HomeController {
               link,
               nominees,
               next_category_title,
-              prev_category_title
+              prev_category_title,
+              api_endpoint: process.env.API_ENDPOINT,
             });
           }
         } catch (error) {
@@ -216,14 +218,16 @@ class HomeController {
             layout: "vote",
             name,
             link,
-            nominees
+            nominees,
+            api_endpoint: process.env.API_ENDPOINT,
           });
         }
       } catch (error) {
         response.render("vote", {
           layout: "vote",
           name,
-          link
+          link,
+          api_endpoint: process.env.API_ENDPOINT,
         });
       }
     } else {

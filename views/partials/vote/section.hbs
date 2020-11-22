@@ -2,12 +2,12 @@
     {{#each nominees}}
     <!-- ⭐️ Klef developed this with ❤️ http://klefcodes.net ⭐️-->
     <article class="episode">
-        <div class="episode__media" style="background-image:url(http://127.0.0.1:3333{{this.image}}); background-size:cover"
-            onmouseover="this.style='background-image:url(http://127.0.0.1:3333{{this.image}}); background-size:cover';"
-            onmouseout="this.style='background-image:url(http://127.0.0.1:3333{{this.image}}); background-size:cover';">
+        <div class="episode__media"
+            style="background-image:url({{../api_endpoint}}{{this.image}}); background-size:cover"
+            onmouseover="this.style='background-image:url({{../api_endpoint}}{{this.image}}); background-size:cover';"
+            onmouseout="this.style='background-image:url({{../api_endpoint}}{{this.image}}); background-size:cover';">
             <a href="#" class="episode__image"></a>
         </div>
-
         <div class="episode__detail">
             <a href="#" class="episode__title">
                 <h4 style="margin: 1rem 170px 0.3rem 0px;">{{this.username}}</h4>
@@ -23,7 +23,7 @@
     {{/each}}
     <br>
     <div class="right">
-    {{#if prev_category_title}}
+        {{#if prev_category_title}}
         <div class="site__navigation">
 
             <a href="/vote/{{prev_category_title}}" class="site__navigation_items site__navigation_items--left ">
@@ -41,7 +41,7 @@
                     Back to Categories </h4>
             </a>
         </div>
-    {{/if}}
+        {{/if}}
     </div>
     {{#if next_category_title}}
     <div class="right">
