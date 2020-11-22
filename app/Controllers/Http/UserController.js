@@ -75,7 +75,7 @@ class UserController {
       return response.json({ errors });
     }
     try {
-      const { data } = await axios.get(`${process.env.lmu_api}/${reg_no}`);
+      const { data } = await axios.get(`${process.env.LMU_API}/${reg_no}`);
       if (data == null) {
         return response.json({
           msg:

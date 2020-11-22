@@ -15,11 +15,15 @@ class VoteController {
     }
     try {
       const user = await verifyJWT(request.token);
-      let lastname = user.name
-        .split(" ")
-        .slice(-1)
-        .join(" ");
-      lastname = lastname.replace(/^\w/, c => c.toUpperCase());
+      let lastname = user.name.split(" ").slice(-1).join(" ");
+      lastname = lastname.replace(/^\w/, (c) => c.toUpperCase());
+
+      if (user.programme != "Economics") {
+        return response.json({
+          msg: "Sorry this is currently opened to only Economics students",
+          error: true,
+        });
+      }
 
       try {
         const nominee = await Nominee.findOne({ where: { id, category } });
@@ -29,12 +33,12 @@ class VoteController {
 
         try {
           const checkVote = await Vote.findOne({
-            where: { reg_no: user.reg_no, category }
+            where: { reg_no: user.reg_no, category },
           });
           if (checkVote) {
             return response.json({
               msg: randomErr("vote", lastname),
-              error: true
+              error: true,
             });
           }
         } catch (error) {
@@ -45,17 +49,17 @@ class VoteController {
           const vote = await Vote.create({
             reg_no: user.reg_no,
             nominee_id: id,
-            category
+            category,
           });
           await nominee.update({
-            vote: nominee.vote + 3
+            vote: nominee.vote + 3,
           });
           try {
             const categories = await Category.findOne({
-              where: { title: category }
+              where: { title: category },
             });
             await categories.update({
-              total: categories.total + 1
+              total: categories.total + 1,
             });
             response.json({ vote });
           } catch (error) {
