@@ -102,14 +102,15 @@ class UserController {
       }
 
       const mailData = {
-        from: "cbs@klefcodes.net",
-        to: email,
+        from: `${process.env.MAIL_FROM_NAME} <${process.env.MAIL_FROM}>`,
+        to: `${fullname} <${email}>`,
         subject: "Verify your account to vote",
         template: "index",
         context: {
           name: fullname,
           email,
           password,
+          endpoint: process.env.APP_URL,
         },
       };
 
