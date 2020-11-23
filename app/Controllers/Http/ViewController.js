@@ -63,6 +63,12 @@ function convertCat(category) {
   if (category == "effectivefemale") {
     category = "Effective Manager of the Year (Female)";
   }
+  if (category == "entrepreneurmale") {
+    category = "Entrepreneur of the Year (Male)";
+  }
+  if (category == "entrepreneurfemale") {
+    category = "Entrepreneur of the Year (Female)";
+  }
   return category;
 }
 
@@ -153,7 +159,9 @@ class HomeController {
       link == "popularmale" ||
       link == "popularfemale" ||
       link == "effectivemale" ||
-      link == "effectivefemale"
+      link == "effectivefemale" ||
+      link == "entrepreneurmale" ||
+      link == "entrepreneurfemale"
     ) {
       name = convertCat(link);
       try {
